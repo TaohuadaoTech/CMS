@@ -3,6 +3,9 @@
 <img src="https://raw.githubusercontent.com/TaohuadaoTech/CMS/main/logo.png" alt="项目 Logo" width="200" >
 这是一个开源的视频建站系统，功能强大，简单易用
 
+<a href="https://www.taohuadao.org">访问官网</a>
+<a href="https://t.me/taohuadaoCMS">官方群组</a>
+<a href="https://bbs.taohuadao.net">官方论坛</a>
 
 
 

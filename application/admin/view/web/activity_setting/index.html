@@ -1,0 +1,129 @@
+<style>
+    .content-input,
+    .two-in-one,
+    .three-in-one,
+    .ip-repeat-flg {
+        display: flex;
+    }
+    .placeholder {
+        padding-left: 5px;
+        color: #adadad;
+        font-size: 14px;
+    }
+    .two-in-one .half {
+        width: 25% !important;
+    }
+    .three-in-one .one-third {
+        width: 13.85%;
+    }
+    .three-in-one .text-center {
+        text-align: center !important;
+    }
+    .ip-repeat-flg .placeholder {
+        padding-top: 5px;
+    }
+</style>
+<div class="panel panel-default panel-intro">
+    {:build_heading()}
+
+    <div class="panel-body">
+        <form id="edit-form" class="edit-form form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('web/activity_setting/edit')}">
+            <input type="hidden" name="row[id]" value="{$row.id|htmlentities}">
+            {:token()}
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-1">{:__('Sign_flg')}:</label>
+                <div class="col-xs-12 col-sm-6">
+                    {:build_radios('row[sign_flg]', $signFlgList, $row['sign_flg'])}
+                </div>
+            </div>
+            <div class="form-group two-in-one">
+                <label class="control-label col-xs-12 col-sm-1">{:__('Continuity_give_number')}:</label>
+                <div class="col-xs-12 col-sm-6 half">
+                    {:build_select('row[continuity_give_type]', $continuityGiveTypeList, [$row['continuity_give_type']], ['class'=>'form-control'])}
+                </div>
+                <div class="col-xs-12 col-sm-6 half content-input">
+                    <input id="c-index" class="form-control" name="row[continuity_give_number]" type="number" value="{$row.continuity_give_number|htmlentities}">
+                    <span class="msg-box n-right">
+                        <span class="msg-wrap placeholder">
+                            <span class="n-msg">{:__('Continuity_give_placeholder')}</span>
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group two-in-one">
+                <label class="control-label col-xs-12 col-sm-1">{:__('Seven_days_give_number')}:</label>
+                <div class="col-xs-12 col-sm-6 half">
+                    {:build_select('row[seven_days_give_type]', $sevenDaysGiveTypeList, [$row['seven_days_give_type']], ['class'=>'form-control'])}
+                </div>
+                <div class="col-xs-12 col-sm-6 half content-input">
+                    <input id="c-index" class="form-control" name="row[seven_days_give_number]" type="number" value="{$row.seven_days_give_number|htmlentities}">
+                    <span class="msg-box n-right">
+                        <span class="msg-wrap placeholder">
+                            <span class="n-msg">{:__('Seven_days_giv_placeholder')}</span>
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-1">{:__('Invite_flg')}:</label>
+                <div class="col-xs-12 col-sm-6">
+                    {:build_radios('row[invite_flg]', $inviteFlgList, $row['invite_flg'])}
+                </div>
+            </div>
+            <div class="form-group three-in-one">
+                <label class="control-label col-xs-12 col-sm-1">{:__('Invite_stage_number')}:</label>
+                <div class="col-xs-12 col-sm-6 one-third">
+                    <input id="c-index" class="form-control" name="row[invite_stage_number]" type="number" value="{$row.invite_stage_number|htmlentities}">
+                </div>
+                <label class="control-label col-xs-12 col-sm-1 text-center">{:__('Invite_stage_give_number')}:</label>
+                <div class="col-xs-12 col-sm-6 one-third">
+                    {:build_select('row[invite_stage_give_type]', $inviteStageGiveTypeList, [$row['invite_stage_give_type']], ['class'=>'form-control'])}
+                </div>
+                <div class="col-xs-12 col-sm-6 one-third content-input">
+                    <input id="c-index" class="form-control" name="row[invite_stage_give_number]" type="number" value="{$row.invite_stage_give_number|htmlentities}">
+                    <span class="msg-box n-right">
+                        <span class="msg-wrap placeholder">
+                            <span class="n-msg">{:__('Invite_stage_placeholder')}</span>
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group three-in-one">
+                <label class="control-label col-xs-12 col-sm-1">{:__('Invite_total_number')}:</label>
+                <div class="col-xs-12 col-sm-6 one-third">
+                    <input id="c-index" class="form-control" name="row[invite_total_number]" type="number" value="{$row.invite_total_number|htmlentities}">
+                </div>
+                <label class="control-label col-xs-12 col-sm-1 text-center">{:__('Invite_total_give_number')}:</label>
+                <div class="col-xs-12 col-sm-6 one-third">
+                    {:build_select('row[invite_total_give_type]', $inviteTotalGiveTypeList, [$row['invite_total_give_type']], ['class'=>'form-control'])}
+                </div>
+                <div class="col-xs-12 col-sm-6 one-third content-input">
+                    <input id="c-index" class="form-control" name="row[invite_total_give_number]" type="number" value="{$row.invite_total_give_number|htmlentities}">
+                    <span class="msg-box n-right">
+                        <span class="msg-wrap placeholder">
+                            <span class="n-msg">{:__('Invite_total_placeholder')}</span>
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-1">{:__('Ip_repeat_flg')}:</label>
+                <div class="col-xs-12 col-sm-6 ip-repeat-flg">
+                    {:build_radios('row[ip_repeat_flg]', $ipRepeatFlgList, $row['ip_repeat_flg'])}
+                    <span class="msg-box n-right">
+                        <span class="msg-wrap placeholder">
+                            <span class="n-msg">{:__('Ip_repeat_placeholder')}</span>
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group layer-footer">
+                <label class="control-label col-xs-12 col-sm-2"></label>
+                <div class="col-xs-12 col-sm-8">
+                    <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+                    <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

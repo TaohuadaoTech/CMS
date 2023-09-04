@@ -1,0 +1,66 @@
+<style>
+    .flex {
+        display: flex;
+    }
+    .ws20 {
+        width: 20%;
+    }
+    .ws50 {
+        width: 50%;
+    }
+    .ml15 {
+        margin-left: 15px;
+    }
+    .ml30 {
+        margin-left: 30px;
+    }
+    .radius4 {
+        border-radius: 4px !important;
+    }
+    .count-where {
+        justify-content: flex-end;
+        margin-right: 30px;
+        margin-top: 12px;
+    }
+    .containers {
+        height: 70vh;
+        margin: 50px auto;
+        width: 98%;
+    }
+</style>
+<div class="panel panel-default panel-intro">
+    {:build_heading()}
+
+    <div class="panel-body">
+        <div class="title flex">
+            <div class="count-number flex ws50">
+                <div class="text-center ml30">
+                    <p>{:__('Vv')}</p>
+                    <p>{$totalVv}</p>
+                </div>
+                <div class="text-center ml30">
+                    <p>{:__('Pv')}</p>
+                    <p>{$totalPv}</p>
+                </div>
+                <div class="text-center ml30">
+                    <p>{:__('Uv')}</p>
+                    <p>{$totalUv}</p>
+                </div>
+                <div class="text-center ml30">
+                    <p>{:__('Rv')}</p>
+                    <p>{$totalRv}</p>
+                </div>
+                <div class="text-center ml30">
+                    <p>{:__('Mv')}</p>
+                    <p>{$totalMv}</p>
+                </div>
+            </div>
+            <div class="count-where flex ws50">
+                <div class="ws20">{:build_select('site_id', $siteList, [$site_id], ['class' => 'radius4'])}</div>
+                <div class="ws20 ml15">{:build_select('date', $dateList, [$date], ['class' => 'radius4'])}</div>
+<!--                <div class="ml15 radius4"><button type="button" class="btn btn-default">{:__('Download')}</button></div>-->
+            </div>
+        </div>
+        <div id="containers" class="containers"></div>
+    </div>
+</div>

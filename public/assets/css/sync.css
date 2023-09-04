@@ -1,0 +1,24 @@
+.sync-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+.sync-title .success {
+    color: #18bc9c;
+}
+.sync-title .red {
+    color: red;
+}
+.message-container {
+    height: 85vh;
+    margin: 0 10px !important;
+    border: 1px solid #767676;
+}
+.message-item {
+    opacity: 0;
+    padding: 2px 5px;
+    color: #18bc9c;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: opacity 0.3ms ease;
+}

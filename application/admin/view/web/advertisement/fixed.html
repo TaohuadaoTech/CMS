@@ -1,0 +1,60 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    {:token()}
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Title')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-title" data-rule="required" class="form-control" name="row[title]" type="text" value="{$row.title|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Jump_Url')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-url" data-rule="required" class="form-control" name="row[url]" type="text" value="{$row.url|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Image_pc')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-image_pc" data-rule="required" class="form-control" name="row[image_pc]" type="text" value="{$row.image_pc|htmlentities}" readonly>
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-image_pc" class="btn btn-danger faupload" data-input-id="c-image_pc" data-mimetype="{$imageMimetype}" data-multiple="false" data-preview-id="p-image_pc"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-image_pc"></span>
+            </div>
+            {if isset($steerSize)}<div class="faupload-image-size-steer">{:__('Recommended size')}: {$steerSize[0]}</div>{/if}
+            <ul class="row list-inline faupload-preview" id="p-image_pc"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Image_h5')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-image_h5" data-rule="required" class="form-control" name="row[image_h5]" type="text" value="{$row.image_h5|htmlentities}" readonly>
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-logo" class="btn btn-danger faupload" data-input-id="c-image_h5" data-mimetype="{$imageMimetype}" data-multiple="false" data-preview-id="p-image_h5"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-image_h5"></span>
+            </div>
+            {if isset($steerSize)}<div class="faupload-image-size-steer">{:__('Recommended size')}: {$steerSize[1]}</div>{/if}
+            <ul class="row list-inline faupload-preview" id="p-image_h5"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="radio">
+                {foreach name="statusList" item="vo"}
+                <label for="row[status]-{$key}"><input id="row[status]-{$key}" name="row[status]" type="radio" value="{$key}" {in name="key" value="$row.status"}checked{/in} /> {$vo}</label>
+                {/foreach}
+            </div>
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

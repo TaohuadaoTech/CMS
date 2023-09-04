@@ -1,0 +1,104 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    {:token()}
+    <div class="adverisement-list">
+        {foreach name="$row['datail_array']" item="vo"}
+        <div id="div-{$key}" class="adverisement">
+            <div class="detail-combination">
+                <div class="form-group">
+                    <label class="control-label col-xs-12 col-sm-2">{:__('Title')}:</label>
+                    <div class="col-xs-12 col-sm-8">
+                        <input id="c-title" data-rule="required" class="form-control" name="row[title][]" type="text" value="{$vo.title|htmlentities}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-12 col-sm-2">{:__('Jump_Url')}:</label>
+                    <div class="col-xs-12 col-sm-8">
+                        <input id="c-url" data-rule="required" class="form-control" name="row[url][]" type="text" value="{$vo.url|htmlentities}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-12 col-sm-2">{:__('Image_pc')}:</label>
+                    <div class="col-xs-12 col-sm-8">
+                        <div class="input-group">
+                            <input id="c-image_pc_{$key}" data-rule="required" class="form-control c-image-pc-input" name="row[image_pc][]" type="text" value="{$vo.image_pc|htmlentities}" readonly>
+                            <div class="input-group-addon no-border no-padding">
+                                <span><button type="button" class="btn btn-danger faupload c-image-pc-button" data-input-id="c-image_pc_{$key}" data-mimetype="{$imageMimetype}" data-multiple="false" data-preview-id="p-image_pc_{$key}"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                            </div>
+                            <span class="msg-box n-right c-image-pc-span" for="c-image_pc_{$key}"></span>
+                        </div>
+                        {if isset($steerSize)}<div class="faupload-image-size-steer">{:__('Recommended size')}: {$steerSize[0]}</div>{/if}
+                        <ul class="row list-inline faupload-preview c-image-pc-ul" id="p-image_pc_{$key}"></ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-12 col-sm-2">{:__('Image_h5')}:</label>
+                    <div class="col-xs-12 col-sm-8">
+                        <div class="input-group">
+                            <input id="c-image_h5_{$key}" data-rule="required" class="form-control c-image-h5-input" name="row[image_h5][]" type="text" value="{$vo.image_h5|htmlentities}" readonly>
+                            <div class="input-group-addon no-border no-padding">
+                                <span><button type="button" class="btn btn-danger faupload c-image-h5-button" data-input-id="c-image_h5_{$key}" data-mimetype="{$imageMimetype}" data-multiple="false" data-preview-id="p-image_h5_{$key}"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                            </div>
+                            <span class="msg-box n-right c-image-h5-span" for="c-image_h5_{$key}"></span>
+                        </div>
+                        {if isset($steerSize)}<div class="faupload-image-size-steer">{:__('Recommended size')}: {$steerSize[1]}</div>{/if}
+                        <ul class="row list-inline faupload-preview c-image-h5-ul" id="p-image_h5_{$key}"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="button-combination {if $vo['add_button']}button_array{/if}">
+                {if $vo['add_button']}
+                <span><button type="button" class="btn btn-danger del-combination"><i class="fa fa fa-trash"></i> {:__('Del')}</button></span>
+                <span><button type="button" class="btn btn-success add-combination"><i class="fa fa fa-plus"></i> {:__('Add')}</button></span>
+                {else}
+                <span><button type="button" class="btn btn-danger del-combination"><i class="fa fa fa-trash"></i> {:__('Del')}</button></span>
+                {/if}
+            </div>
+        </div>
+        {/foreach}
+    </div>
+    <div class="form-group status-field">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="radio">
+                {foreach name="statusList" item="vo"}
+                <label for="row[status]-{$key}"><input id="row[status]-{$key}" name="row[status]" type="radio" value="{$key}" {in name="key" value="$row.status"}checked{/in} /> {$vo}</label>
+                {/foreach}
+            </div>
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
+<style>
+    .adverisement {
+        border-radius: 4px;
+        padding-top: 15px;
+        margin-bottom: 15px;
+        border: 1px #979797 solid;
+        display: flex;
+    }
+    .detail-combination {
+        width: 100%;
+        margin-left: 10px;
+    }
+    .button_array {
+        width: 65px !important;
+        top: 60px !important;
+    }
+    .button_array button {
+        margin-bottom: 10px;
+    }
+    .button-combination {
+        position: relative;
+        top: 68px;
+        right: 5%;
+    }
+    .status-field {
+        margin-top: 15px;
+    }
+</style>

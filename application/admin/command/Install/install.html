@@ -1,0 +1,739 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{$stand.title_main|htmlentities}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <meta name="renderer" content="webkit">
+
+    <style>
+        body {
+            background: #f1f6fd;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body, input, button {
+            font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, 'Microsoft Yahei', Arial, sans-serif;
+            font-size: 14px;
+            color: #7E96B3;
+        }
+
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 20px 10px 10px;
+            text-align: center;
+        }
+
+        a {
+            color: #4e73df;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: normal;
+            color: #3C5675;
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+
+        form {
+            /*margin-top: 40px;*/
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group .form-field:first-child input {
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+
+        .form-group .form-field:last-child input {
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+
+        .form-field input {
+            background: #fff;
+            /*margin: 0 0 2px;*/
+            border: 2px solid transparent;
+            transition: background 0.2s, border-color 0.2s, color 0.2s;
+            width: 100%;
+            padding: 15px 15px 15px 180px;
+            box-sizing: border-box;
+        }
+
+        .form-field input:focus {
+            border-color: #4e73df;
+            background: #fff;
+            color: #444;
+            outline: none;
+        }
+
+        .form-field label {
+            float: left;
+            width: 160px;
+            text-align: right;
+            margin-right: -160px;
+            position: relative;
+            margin-top: 15px;
+            font-size: 14px;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        button, .btn {
+            background: #3C5675;
+            color: #fff;
+            border: 0;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 15px 50px;
+            -webkit-appearance: none;
+        }
+
+        button[disabled] {
+            opacity: 0.5;
+        }
+
+        .form-buttons {
+            height: 52px;
+            line-height: 52px;
+        }
+
+        .form-buttons .btn {
+            margin-right: 5px;
+        }
+
+        #error, .error, #success, .success, #warmtips, .warmtips {
+            background: #D83E3E;
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        #success {
+            background: #3C5675;
+        }
+
+        #error a, .error a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        #warmtips {
+            background: #ffcdcd;
+            font-size: 14px;
+            color: #e74c3c;
+        }
+
+        #warmtips a {
+            background: #ffffff7a;
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            margin-top: 10px;
+            color: #e21a1a;
+            border-radius: 3px;
+        }
+
+        .w33 {
+            width: 33%;
+        }
+        .w34 {
+            width: 34%;
+        }
+        .w50 {
+            width: 50%;
+        }
+        .error-msg {
+            color: red;
+        }
+
+        .title {
+            text-align: center;
+            height: 60px;
+            line-height: 60px;
+            font-size: 22px;
+            font-weight: 600;
+            background-color: #d8d8d8;
+            margin-bottom: 20px;
+            color: #000;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #instruction {
+            padding: 0 20px;
+            border: 1px #979797 solid;
+            background-color: #f8f8f8;
+        }
+        #instruction .title {
+            font-size: 18px;
+            margin-bottom: 0;
+            background-color: #f8f8f8;
+        }
+        #instruction .markdown {
+            text-align: left;
+            border: 1px #979797 solid;
+            background-color: #ffffff;
+            padding: 20px;
+        }
+        #instruction .form-buttons {
+            margin: 10px 0;
+        }
+
+        #environmental {
+            padding: 0 20px;
+            border: 1px #979797 solid;
+            background-color: #f8f8f8;
+        }
+        #environmental .title {
+            font-size: 18px;
+            margin-bottom: 0;
+            background-color: #f8f8f8;
+        }
+        #environmental table {
+            border-collapse: collapse;
+            border: 1px solid #979797;
+            margin-bottom: 15px;
+            width: 100%;
+            color: #000;
+        }
+        #environmental table thead {
+            background-color: #f6f6f6;
+        }
+        #environmental table th, #environmental table td {
+            border: 1px solid #979797;
+            padding: 8px;
+        }
+        #environmental table tr.error {
+            background-color: #cecece;
+            color: #000;
+        }
+        #environmental .form-buttons {
+            padding-bottom: 15px;
+            display: flex;
+            height: 100%;
+        }
+        #environmental .form-buttons .buttons-onw {
+            width: 45%;
+            text-align: left;
+        }
+        #environmental .form-buttons .buttons-two {
+            width: 55%;
+            text-align: right;
+        }
+
+        #config {
+            padding: 0 20px;
+            border: 1px #979797 solid;
+            background-color: #f8f8f8;
+        }
+        #config .title {
+            font-size: 18px;
+            margin-bottom: 0;
+            background-color: #f8f8f8;
+        }
+        #config .form {
+            padding-bottom: 15px;
+            color: #000;
+        }
+        #config .form .form-group {
+            border: 1px solid #979797;
+            border-radius: 4px;
+        }
+        #config .form .test-button {
+            text-align: left;
+            margin-left: 10px;
+            background-color: #ffffff;
+        }
+        #config .form .test-database {
+            padding: 10px 35px;
+            background-color: #d8d8d8;
+            color: #000;
+            margin: 10px 0;
+            font-size: 16px;
+            font-weight: normal;
+        }
+        #config .form-buttons {
+            padding-bottom: 15px;
+            display: flex;
+            height: 100%;
+        }
+        #config .form-buttons .buttons-onw {
+            width: 45%;
+            text-align: left;
+        }
+        #config .form-buttons .buttons-two {
+            width: 55%;
+            text-align: right;
+        }
+
+        #installsuccess {
+            padding: 0 20px;
+            border: 1px #979797 solid;
+            background-color: #f8f8f8;
+        }
+        #installsuccess .title {
+            font-size: 18px;
+            margin-bottom: 0;
+            background-color: #f8f8f8;
+        }
+        #installsuccess .content {
+            border: 1px #979797 solid;
+            background-color: #ffffff;
+            overflow-wrap: break-word;
+            text-align: left;
+            padding: 0 20px;
+            color: #000;
+        }
+        #installsuccess .form-buttons {
+            margin: 15px 0;
+        }
+
+        @media (max-width: 768px) {
+            #environmental .form-buttons {
+                display: block;
+            }
+            #environmental .form-buttons .btn,
+            #environmental .form-buttons .buttons-onw,
+            #environmental .form-buttons .buttons-two {
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+
+<body style="height: 100vh;">
+<div class="title">
+    <span>{$stand.title_main|htmlentities}</span>
+</div>
+<div class="container">
+    {if $errInfo}
+    <div class="error">
+        {$errInfo}
+    </div>
+    {/if}
+    <div id="error" style="display: none"></div>
+    <div id="success" style="display:none"></div>
+    <div id="warmtips" style="display:none"></div>
+
+    <div id="instruction" style="display: none">
+        <div class="title"><span>{$stand.title_sub|htmlentities}</span></div>
+        <div class="markdown">
+            {$stand.instruction}
+        </div>
+        <div class="form-buttons">
+            <button id="instruction_continue" class="btn continue" type="button">{:__('Continue to install')}</button>
+        </div>
+    </div>
+
+    <div id="environmental" style="display: none">
+        <div class="title"><span>{:__('Running environmental detection')}</span></div>
+        <input type="hidden" id="php_version" value="{$rundata.php_version}" />
+        <div class="table">
+            <table>
+                <thead>
+                <tr>
+                    <th class="w33">{:__('Environmental name')}</th>
+                    <th class="w34">{:__('Required configuration')}</th>
+                    <th class="w33">{:__('Current configuration')}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach name="rundata.runenv" item="item"}
+                <tr>
+                    <td>{$item.name}</td>
+                    <td>{$item.required}</td>
+                    <td class="{if !$item.success}error-msg{/if}">{$item.current}</td>
+                </tr>
+                {/foreach}
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                <tr>
+                    <th class="w33">{:__('Directory/file')}</th>
+                    <th class="w34">{:__('Required permissions')}</th>
+                    <th class="w33">{:__('Current authority')}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach name="rundata.pathenv" item="item"}
+                <tr>
+                    <td>{$item.path}</td>
+                    <td>{$item.required}</td>
+                    <td class="{if !$item.success}error-msg{/if}">{$item.current}</td>
+                </tr>
+                {/foreach}
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                <tr>
+                    <th class="w50">{:__('The need to install expansion')}</th>
+                    <th class="w50">{:__('Whether to install')}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach name="rundata.extensionenv" item="item"}
+                <tr>
+                    <td>{$item.name}</td>
+                    <td class="{if !$item.success}error-msg{/if}">{$item.current}</td>
+                </tr>
+                {/foreach}
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                <tr>
+                    <th class="w50">{:__('The disable function that needs to be deleted')}</th>
+                    <th class="w50">{:__('delete or not')}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach name="rundata.functionenv" item="item"}
+                <tr>
+                    <td>{$item.name}</td>
+                    <td class="{if !$item.success}error-msg{/if}">{$item.current}</td>
+                </tr>
+                {/foreach}
+                </tbody>
+            </table>
+        </div>
+        <div class="form-buttons">
+            <div class="buttons-onw">
+                <button id="environmental_back" class="btn back" type="button">{:__('Back to the previous step')}</button>
+            </div>
+            <div class="buttons-two">
+                <button id="environmental_solution" class="btn solution" type="button">{:__('View solution')}</button>
+                <button id="environmental_continue" class="btn continue" type="button">{:__('Continue to install')}</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="config" style="display: none">
+        <div class="title"><span>{$stand.title_sub|htmlentities}</span></div>
+        <div class="form">
+            <form id="config_form" autocomplete="off" method="post">
+                <div class="form-group">
+                    <div class="form-field">
+                        <label>{:__('Mysql Hostname')}</label>
+                        <input type="text" name="mysqlHostname" value="127.0.0.1" required="" />
+                    </div>
+
+                    <div class="form-field">
+                        <label>{:__('Mysql Database')}</label>
+                        <input type="text" name="mysqlDatabase" value="" required="" />
+                    </div>
+
+                    <div class="form-field">
+                        <label>{:__('Mysql Username')}</label>
+                        <input type="text" name="mysqlUsername" value="" required="" />
+                    </div>
+
+                    <div class="form-field">
+                        <label>{:__('Mysql Password')}</label>
+                        <input type="password" name="mysqlPassword" />
+                    </div>
+
+                    <div class="form-field">
+                        <label>{:__('Mysql Prefix')}</label>
+                        <input type="text" name="mysqlPrefix" value="fa_" />
+                    </div>
+
+                    <div class="form-field">
+                        <label>{:__('Mysql Hostport')}</label>
+                        <input type="number" name="mysqlHostport" value="3306" />
+                    </div>
+
+                    <div class="form-field test-button">
+                        <button id="config_test_database" class="btn test-database" type="submit" value="config_test_database">{:__('Test database connection')}</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-field">
+                        <label>{:__('Admin Username')}</label>
+                        <input name="adminUsername" value="admin" />
+                    </div>
+
+                    <div class="form-field">
+                        <label>{:__('Admin Password')}</label>
+                        <input type="password" name="adminPassword" />
+                    </div>
+
+                    <div class="form-field">
+                        <label>{:__('Repeat Password')}</label>
+                        <input type="password" name="adminPasswordConfirmation" />
+                    </div>
+
+                    <div class="form-field">
+                        <label>{:__('Background path')}</label>
+                        <input type="text" name="backgroundPath" value="{$defaultBackgroundPath}" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-field">
+                        <label>{:__('Website')}</label>
+                        <input type="text" name="siteName" value="{:__('Peach Blossom Island')}" />
+                    </div>
+
+                </div>
+
+                <div class="form-buttons">
+                    <div class="buttons-onw">
+                        <button id="config_back" class="btn back" type="button">{:__('Back to the previous step')}</button>
+                    </div>
+                    <div class="buttons-two">
+                        <button id="config_submit" type="submit" class="btn" value="config_submit">{:__('Install now')}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="installsuccess" style="display: none">
+        <div class="title"><span>{:__('The installation is complete')}</span></div>
+        <div class="content">
+            <p>{:__('Default front desk address')}: <span id="default_address"></span></p>
+            <p>{:__('Background management address')}: <span id="default_management_address"></span></p>
+            <p>{:__('username')}: <span id="default_username"></span></p>
+            <p>{:__('password')}: <span id="default_password"></span></p>
+        </div>
+        <div class="form-buttons">
+            <button id="installsuccess_button" class="btn" type="button">{:__('Open the background')}</button>
+        </div>
+    </div>
+</div>
+<script>
+var beforeunloadPrompt = true;
+window.onload = function() {
+    showTable();
+};
+window.addEventListener('beforeunload', function (event) {
+    var url = window.location.href;
+    var urlParts = url.split('#');
+    if (urlParts.length > 1) {
+        if (urlParts[1] === 'installsuccess') {
+            if (beforeunloadPrompt) {
+                event.preventDefault();
+                event.returnValue = '';
+            }
+        }
+    }
+});
+document.getElementById('instruction_continue').addEventListener('click', function () {
+    window.location.href = '#environmental';
+    showTable('instruction');
+});
+document.getElementById('environmental_back').addEventListener('click', function () {
+    window.location.href = '#instruction';
+    showTable('environmental');
+});
+document.getElementById('environmental_solution').addEventListener('click', function () {
+    window.open('{$stand.url}', '_blank');
+});
+document.getElementById('environmental_continue').addEventListener('click', function () {
+    if (!document.getElementById('php_version').value) {
+        showMessage('error', "{:__('PHP operating environment detection cannot be passed')}");
+        return;
+    }
+    disableButton('environmental_continue', "{:__('checking')}");
+    sendAjaxRequest('/install.php/checkrunenv', '', 'GET', function (response, error) {
+        if (response) {
+            var data = JSON.parse(response);
+            if (data.code === 1) {
+                window.location.href = '#config';
+                showTable('environmental');
+                hideMessage('error');
+            } else {
+                showMessage('error', data.msg);
+            }
+        } else if (error) {
+            showMessage('error', error.message);
+        }
+        enableButton('environmental_continue', "{:__('Continue to install')}");
+    });
+});
+document.getElementById('config_back').addEventListener('click', function () {
+    window.location.href = '#environmental';
+    showTable('config');
+});
+document.getElementById('config_form').addEventListener('submit', function (event) {
+   event.preventDefault();
+    var buttonValue = event.submitter.value;
+    var form = document.getElementById('config_form');
+   if (buttonValue === 'config_test_database') {
+       disableButton('config_test_database', "{:__('Connection test')}");
+        var testParams = {
+            'mysqlHostname': form.querySelector('[name="mysqlHostname"]').value,
+            'mysqlHostport': form.querySelector('[name="mysqlHostport"]').value,
+            'mysqlUsername': form.querySelector('[name="mysqlUsername"]').value,
+            'mysqlPassword': form.querySelector('[name="mysqlPassword"]').value,
+        };
+        sendAjaxRequest('/install.php/testdatabase', testParams, 'POST', function (response, error) {
+            if (response) {
+                var data = JSON.parse(response);
+                if (data.code === 1) {
+                    showMessage('success', "{:__('Database connection is successful')}");
+                } else {
+                    showMessage('error', data.msg);
+                }
+            } else if (error) {
+                showMessage('error', error.message);
+            }
+            enableButton('config_test_database', "{:__('Test database connection')}");
+        });
+   } else if (buttonValue === 'config_submit') {
+        disableButton('config_submit', "{:__('Installing')}");
+        disableButton('config_back', "{:__('Back to the previous step')}");
+        var installParams = {
+            'mysqlHostname': form.querySelector('[name="mysqlHostname"]').value,
+            'mysqlHostport': form.querySelector('[name="mysqlHostport"]').value,
+            'mysqlUsername': form.querySelector('[name="mysqlUsername"]').value,
+            'mysqlPassword': form.querySelector('[name="mysqlPassword"]').value,
+            'mysqlDatabase': form.querySelector('[name="mysqlDatabase"]').value,
+            'mysqlPrefix': form.querySelector('[name="mysqlPrefix"]').value,
+            'adminUsername': form.querySelector('[name="adminUsername"]').value,
+            'adminPassword': form.querySelector('[name="adminPassword"]').value,
+            'adminPasswordConfirmation': form.querySelector('[name="adminPasswordConfirmation"]').value,
+            'backgroundPath': form.querySelector('[name="backgroundPath"]').value,
+            'siteName': form.querySelector('[name="siteName"]').value,
+        };
+        if (installParams['adminPassword'] !== installParams['adminPasswordConfirmation']) {
+            showMessage('warmtips', "{:__('The two passwords you entered did not match')}");
+            enableButton('config_back', "{:__('Back to the previous ste')}");
+            enableButton('config_submit', "{:__('Install now')}");
+            return false;
+        }
+        if (installParams['backgroundPath']) {
+            if (!new RegExp("{$backgroundPathReg}").test(installParams['backgroundPath'])) {
+                showMessage('warmtips', "{:__('The background path can only be composed of numbers and lowercase letters, and the length is from 7 to 32')}");
+                enableButton('config_back', "{:__('Back to the previous ste')}");
+                enableButton('config_submit', "{:__('Install now')}");
+                return false;
+            }
+        }
+        hideMessage('error'); hideMessage('success'); hideMessage('warmtips');
+        sendAjaxRequest('/install.php', installParams, 'POST', function (response, error) {
+            if (response) {
+                var data = JSON.parse(response);
+                if (data.code === 1) {
+                    data = data.data;
+                    var managementAddress = data.domain + '/' + data.adminName;
+                    document.getElementById('default_address').innerText = data.domain;
+                    document.getElementById('default_username').innerText = data.adminUsername;
+                    document.getElementById('default_password').innerText = data.adminPassword;
+                    document.getElementById('default_management_address').innerText = managementAddress;
+                    document.getElementById('installsuccess_button').setAttribute('data-url', managementAddress);
+                    hideMessage('error'); hideMessage('success'); hideMessage('warmtips');
+                    window.location.href = '#installsuccess';
+                    showTable('config');
+                } else {
+                    showMessage('error', data.msg);
+                }
+            } else if (error) {
+                showMessage('error', error.message);
+            }
+            enableButton('config_submit', "{:__('Install now')}");
+            enableButton('config_back', "{:__('Back to the previous ste')}");
+        });
+   }
+   return false;
+});
+document.getElementById('installsuccess_button').addEventListener('click', function () {
+    var url = document.getElementById('installsuccess_button').getAttribute('data-url');
+    beforeunloadPrompt = false;
+    window.location.href = url;
+});
+function showTable(hideTableName) {
+    var tableName = '';
+    var url = window.location.href;
+    var urlParts = url.split('#');
+    if (urlParts.length > 1) {
+        tableName = urlParts[1];
+        if (!document.getElementById(tableName)) {
+            tableName = '';
+        }
+    }
+    if (tableName === '') {
+        tableName = 'instruction';
+    }
+    document.getElementById(tableName).style.display = 'block';
+    if (hideTableName) {
+        document.getElementById(hideTableName).style.display = 'none';
+    }
+}
+function showMessage(idName, message) {
+    hideMessage('error');
+    hideMessage('success');
+    hideMessage('warmtips');
+    document.getElementById(idName).innerText = message;
+    document.getElementById(idName).style.display = 'block';
+}
+function hideMessage(idName) {
+    document.getElementById(idName).style.display = 'none'
+}
+function disableButton(idName, innerText) {
+    var buttonElement = document.getElementById(idName);
+    buttonElement.setAttribute('disabled', 'disabled');
+    buttonElement.style.cursor = 'not-allowed';
+    buttonElement.innerText = innerText;
+}
+function enableButton(idName, innerText) {
+    var buttonElement = document.getElementById(idName);
+    buttonElement.removeAttribute('disabled');
+    buttonElement.style.cursor = 'pointer';
+    buttonElement.innerText = innerText;
+}
+function sendAjaxRequest(url, data, method, callback) {
+    var xhr;
+    if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+    } else {
+        xhr = ActiveXObject('Microsoft.XMLHTTP');
+    }
+    xhr.open(method, url, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                callback(xhr.responseText, null);
+            } else {
+                callback(null, new Error('Request failed'));
+            }
+        }
+    };
+    if (method === 'POST') {
+        xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        xhr.send(JSON.stringify(data));
+    } else {
+        xhr.send(data);
+    }
+}
+</script>
+</body>
+</html>

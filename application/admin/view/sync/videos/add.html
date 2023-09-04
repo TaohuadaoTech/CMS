@@ -1,0 +1,166 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Vid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-vid" data-rule="required" class="form-control" name="row[vid]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Sn')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-sn" class="form-control" name="row[sn]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" data-rule="required" class="form-control" name="row[name]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Pinyin')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pinyin" data-rule="required" class="form-control" name="row[pinyin]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Category_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-category_id" data-rule="required" min="0" data-source="category/selectpage" data-params='{"custom[type]":"sync_videos"}' class="form-control selectpage" name="row[category_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Origin_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-origin_id" data-rule="required" data-source="origin/index" class="form-control selectpage" name="row[origin_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Description')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-description" data-rule="required" class="form-control" name="row[description]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Cover')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-cover" data-rule="required" class="form-control" name="row[cover]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('M3u8_url')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-m3u8_url" data-rule="required" class="form-control" name="row[m3u8_url]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Share_url')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-share_url" data-rule="required" class="form-control" name="row[share_url]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[time]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Size')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-size" data-rule="required" class="form-control" name="row[size]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Resolution')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-resolution" data-rule="required" class="form-control" name="row[resolution]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Bit_rate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-bit_rate" data-rule="required" class="form-control" name="row[bit_rate]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Tags')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-tags" data-rule="required" class="form-control" data-role="tagsinput" name="row[tags]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Tags_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-tags_id" data-rule="required" data-source="tags/index" class="form-control selectpage" name="row[tags_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Actresses')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-actresses" data-rule="required" class="form-control" name="row[actresses]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Actresses_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-actresses_id" data-rule="required" data-source="actresses/index" class="form-control selectpage" name="row[actresses_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Views')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-views" data-rule="required" class="form-control" name="row[views]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Favorites')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-favorites" data-rule="required" class="form-control" name="row[favorites]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Like')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-like" data-rule="required" class="form-control" name="row[like]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Dislike')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-dislike" data-rule="required" class="form-control" name="row[dislike]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('State')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-state" data-rule="required" class="form-control" name="row[state]" type="number" value="1">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Release_date')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-release_date" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[release_date]" type="text" value="{:date('Y-m-d')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Created_at')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-created_at" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[created_at]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Updated_at')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-updated_at" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[updated_at]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

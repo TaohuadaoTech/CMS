@@ -455,7 +455,6 @@ CREATE TABLE `fa_sync_actresses`  (
 -- Records of fa_sync_actresses
 -- ----------------------------
 
-
 -- ----------------------------
 -- Table structure for fa_sync_categories
 -- ----------------------------
@@ -539,7 +538,6 @@ CREATE TABLE `fa_sync_tags`  (
 -- Records of fa_sync_tags
 -- ----------------------------
 
-
 -- ----------------------------
 -- Table structure for fa_sync_templates
 -- ----------------------------
@@ -561,11 +559,6 @@ CREATE TABLE `fa_sync_templates`  (
 -- ----------------------------
 -- Records of fa_sync_templates
 -- ----------------------------
-INSERT INTO `fa_sync_templates` VALUES (15, '模板2', 'https://admin.emoppb.buzz/app/admin/upload/img/20230702/首页-0606.jpg', '1.0', 'https://admin.emoppb.buzz/app/admin/upload/files/20230828/taohuadao2.zip', 3864152, '', '', '2023-07-01 21:39:45', '2023-08-28 18:10:11');
-INSERT INTO `fa_sync_templates` VALUES (16, '模版3', 'https://admin.emoppb.buzz/app/admin/upload/img/20230702/taohuadao3.png', '1.0', 'https://admin.emoppb.buzz/app/admin/upload/files/20230828/taohuadao3.zip', 2421994, '', '', '2023-07-02 14:35:33', '2023-08-28 18:10:30');
-INSERT INTO `fa_sync_templates` VALUES (17, '模板1', 'https://admin.emoppb.buzz/app/admin/upload/img/20230702/photo_2023-07-02_19-04-41.jpg', '1.0', 'https://admin.emoppb.buzz/app/admin/upload/files/20230828/taohuadao1.zip', 2576062, '', '', '2023-07-02 19:05:52', '2023-08-28 18:10:47');
-INSERT INTO `fa_sync_templates` VALUES (18, '模板4', 'https://admin.emoppb.buzz/app/admin/upload/img/20230702/photo_2023-07-02_19-06-32.jpg', '1.0', 'https://admin.emoppb.buzz/app/admin/upload/files/20230828/taohuadao5.zip', 5560279, 'pink', '', '2023-07-02 19:06:50', '2023-08-28 18:11:10');
-INSERT INTO `fa_sync_templates` VALUES (19, '模版5', 'https://admin.emoppb.buzz/app/admin/upload/img/20230709/模版5.png', '1.0', 'https://admin.emoppb.buzz/app/admin/upload/files/20230828/taohuadao5.zip', 5560279, 'yellow', '', '2023-07-09 19:14:14', '2023-08-28 18:11:32');
 
 -- ----------------------------
 -- Table structure for fa_sync_videos
@@ -608,7 +601,6 @@ CREATE TABLE `fa_sync_videos`  (
 -- ----------------------------
 -- Records of fa_sync_videos
 -- ----------------------------
-
 
 -- ----------------------------
 -- Table structure for fa_test
